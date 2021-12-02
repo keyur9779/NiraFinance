@@ -2,6 +2,9 @@ package com.appp.nira.utils
 
 object Constant {
 
+
+    fun updateFormat(value: Int): String = String.format("%,d", value)
+
     const val PREF = "Nira_Pref"
 
     const val HOST: String = "Google.com"

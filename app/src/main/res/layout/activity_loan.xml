@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<!--
     <data>
 
         <variable
-            name="viewModel"
-            type="com.appp.nira.viewDataModels.LoanCalculatorViewModel" />
+            name="loanPlannerModel"
+            type="com.appp.nira.models.LoanPlannerModel" />
 
-    </data>
+    </data>-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".view.uiActivity.LoanCalculatorActivity">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/calculatorImage"
@@ -64,23 +66,24 @@
                 </androidx.appcompat.widget.AppCompatTextView>
 
                 <com.google.android.material.slider.Slider
-                    android:id="@+id/continuousSlider"
+                    android:id="@+id/amountSlider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/loanAmount"
-                    android:stepSize="@{viewModel.getLoanData.loanMover}"
-                    android:value="@{viewModel.getLoanData.defaultLoanAmount}"
-                    android:valueFrom="@{viewModel.getLoanData.loanLowerLimit}"
-                    android:valueTo="@{viewModel.getLoanData.loanUpperLimit}" />
+
+                    app:labelBehavior="floating" />
+                <!--
+                                android:stepSize="@{viewModel.getLoanData.loanMover}"
+                                android:value="@{viewModel.getLoanData.defaultLoanAmount}"
+                                android:valueFrom="@{viewModel.getLoanData.loanLowerLimit}"
+                                android:valueTo="@{viewModel.getLoanData.loanUpperLimit}"
+                -->
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/loanLowerLimit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/continuousSlider"
-
-
-                    android:text="5,000"
+                    android:layout_below="@+id/amountSlider"
                     android:textColor="@color/HintText"
                     android:textSize="@dimen/sp_10"></androidx.appcompat.widget.AppCompatTextView>
 
@@ -88,12 +91,8 @@
                     android:id="@+id/loanUpperLimit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/continuousSlider"
+                    android:layout_below="@+id/amountSlider"
                     android:layout_alignParentRight="true"
-
-
-                    android:text="100,000"
-
                     android:textColor="@color/HintText"
                     android:textSize="@dimen/sp_10"></androidx.appcompat.widget.AppCompatTextView>
 
@@ -114,22 +113,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/loanTenure"
-                    android:stepSize="@{viewModel.getLoanData.loanMover}"
-                    android:value="@{viewModel.getLoanData.defaultLoanAmount}"
-                    android:valueFrom="@{viewModel.getLoanData.loanLowerLimit}"
-                    android:valueTo="@{viewModel.getLoanData.loanUpperLimit}" />
+                    android:stepSize="10.0"
+                    android:value="30.0"
+                    android:valueFrom="0.0"
+                    android:valueTo="100.0"
+                    app:labelBehavior="floating" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tenureLowerLimit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tenureSlider"
-
-
-                    android:text="3"
-
                     android:textColor="@color/HintText"
-                    android:textSize="@dimen/sp_10"></androidx.appcompat.widget.AppCompatTextView>
+                    android:textSize="@dimen/sp_10"
+                    ></androidx.appcompat.widget.AppCompatTextView>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tenureUpperLimit"
@@ -137,9 +134,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tenureSlider"
                     android:layout_alignParentRight="true"
-                    android:text="12"
                     android:textColor="@color/HintText"
-                    android:textSize="@dimen/sp_10"></androidx.appcompat.widget.AppCompatTextView>
+                    android:textSize="@dimen/sp_10"
+                    ></androidx.appcompat.widget.AppCompatTextView>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/emi"
@@ -155,9 +152,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/emi"
-                    android:text="Interest @ 2% per month"
                     android:textColor="@color/HintText"
-                    android:textSize="@dimen/sp_10"></androidx.appcompat.widget.AppCompatTextView>
+                    android:textSize="@dimen/sp_10"
+                    ></androidx.appcompat.widget.AppCompatTextView>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/totalLoan"
@@ -165,9 +162,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tenureUpperLimit"
                     android:layout_alignParentRight="true"
-                    android:text="12000"
                     android:textColor="@color/HintText"
-                    android:textSize="@dimen/sp_18"></androidx.appcompat.widget.AppCompatTextView>
+                    android:textSize="@dimen/sp_18"
+                    ></androidx.appcompat.widget.AppCompatTextView>
 
 
             </RelativeLayout>

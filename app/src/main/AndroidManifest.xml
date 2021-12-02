@@ -15,8 +15,7 @@
         <activity
             android:name=".view.uiActivity.SplashScreen"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            tools:ignore="IntentFilterExportedReceiver">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
