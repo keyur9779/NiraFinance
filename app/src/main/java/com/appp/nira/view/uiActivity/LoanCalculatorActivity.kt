@@ -1,6 +1,7 @@
 package com.appp.nira.view.uiActivity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.appp.nira.R
@@ -23,7 +24,6 @@ class LoanCalculatorActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initializeUI()
-
     }
 
     private fun initializeUI() {
@@ -72,11 +72,19 @@ class LoanCalculatorActivity :
 
 
             })
+
+        binding.viewLogButton.setOnClickListener {
+            startActivity(Intent(this@LoanCalculatorActivity, ApplyActivity::class.java))
+            finish()
+
+        }
+
     }
 
-    private fun updateView(loanPlannerMasasodel: LoanPlannerModel) {
+    private fun updateView(loanPlannerModel: LoanPlannerModel) {
 
         with(binding) {
+
             amountSlider.apply {
                 stepSize = loanPlannerModel.loanMover.toFloat()
                 value = loanPlannerModel.defaultLoanAmount.toFloat()
@@ -97,12 +105,10 @@ class LoanCalculatorActivity :
 
             loanAmount.text = "Loan Amt ${updateFormat(loanPlannerModel.defaultLoanAmount)}"
             loanTenure.text = "Tensure ${loanPlannerModel.tenurDefault}"
-            /*
-            loanPlannerModel = loanPlannerMasasodel
-            executePendingBindings()*/
-
-//U+20B9
-
+            val amount =
+                (loanPlannerModel.amount + loanPlannerModel.interest) / loanPlannerModel.tenurDefault
+            totalLoan.text = "${updateFormat(amount)}"
+            interest.text = "Interest @ ${loanPlannerModel.interest}% per month"
 
         }
 

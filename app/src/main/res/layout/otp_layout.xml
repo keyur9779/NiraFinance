@@ -60,7 +60,6 @@
             android:layout_marginStart="@dimen/dp_16"
             android:layout_marginTop="@dimen/dp_16"
             android:layout_marginEnd="@dimen/dp_16"
-            android:background="@color/background"
             android:hint="10 digit mobile number"
             app:hintTextColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"

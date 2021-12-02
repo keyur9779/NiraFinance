@@ -27,8 +27,9 @@ class SplashScreen : AppCompatActivity() {
             if (it.data) {
                 startActivity(Intent(this@SplashScreen, LoanCalculatorActivity::class.java))
             } else {
-                // start mobile otp screen
+                startActivity(Intent(this@SplashScreen, OtpActivity::class.java))
             }
+            finish()
         })
 
         /*lifecycleScope.launch(Dispatchers.Main) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -53,6 +54,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appName"></androidx.appcompat.widget.AppCompatTextView>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/steps"
+            tools:listitem="@layout/row_image" />
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/document"
@@ -80,12 +94,12 @@
             android:gravity="center"
             android:text="Get loan approved within 24 hrs"
             android:textColor="@color/HintText"
-            app:layout_constraintBottom_toTopOf="@id/viewLogButton"
+            app:layout_constraintBottom_toTopOf="@id/applyButton"
             app:layout_constraintLeft_toLeftOf="parent"></androidx.appcompat.widget.AppCompatTextView>
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/viewLogButton"
+            android:id="@+id/applyButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_16"

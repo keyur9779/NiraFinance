@@ -1,6 +1,8 @@
 package com.appp.nira.utils.dependencyInjections
 
+import com.appp.nira.data.repository.ApplyRepository
 import com.appp.nira.data.repository.LoanCalculatorRepository
+import com.appp.nira.data.repository.OtpRepository
 import com.appp.nira.data.repository.SplashRepository
 import dagger.Module
 import dagger.Provides
@@ -25,5 +27,19 @@ object RepositoryModule {
     fun provideLoanCalculatorRepository(
     ): LoanCalculatorRepository {
         return LoanCalculatorRepository()
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideApplyRepository(
+    ): ApplyRepository {
+        return ApplyRepository()
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideOtpRepository(
+    ): OtpRepository {
+        return OtpRepository()
     }
 }

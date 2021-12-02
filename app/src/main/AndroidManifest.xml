@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.appp.nira">
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"></uses-permission>
 
     <application
         android:name=".NiraApp"
@@ -14,8 +17,8 @@
 
         <activity
             android:name=".view.uiActivity.SplashScreen"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,6 +26,12 @@
         </activity>
         <activity
             android:name=".view.uiActivity.LoanCalculatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.uiActivity.ApplyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.uiActivity.OtpActivity"
             android:screenOrientation="portrait" />
 
     </application>
