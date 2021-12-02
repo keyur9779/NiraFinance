@@ -74,7 +74,7 @@ class LoanCalculatorActivity :
             })
     }
 
-    private fun updateView(loanPlannerModel: LoanPlannerModel) {
+    private fun updateView(loanPlannerMasasodel: LoanPlannerModel) {
 
         with(binding) {
             amountSlider.apply {
@@ -97,6 +97,9 @@ class LoanCalculatorActivity :
 
             loanAmount.text = "Loan Amt ${updateFormat(loanPlannerModel.defaultLoanAmount)}"
             loanTenure.text = "Tensure ${loanPlannerModel.tenurDefault}"
+            /*
+            loanPlannerModel = loanPlannerMasasodel
+            executePendingBindings()*/
 
 //U+20B9
 
