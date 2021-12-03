@@ -1,4 +1,4 @@
-# FittrApp
+# NIRA
 
 ## Library and tech stack
 - Minimum SDK level 23
