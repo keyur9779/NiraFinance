@@ -10,7 +10,6 @@ data class LoanPlannerModel(
     val tenurMover: Int = 1,
     var tenurDefault: Int = 9,
     val interest: Int = 2,
-    var amount:Int = 0,
-    var keyur:String = "asdasdsad"
+    var amount:Int = 0
 
 )

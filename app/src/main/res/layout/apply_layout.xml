@@ -5,9 +5,10 @@
 
     <data>
 
+
         <variable
-            name="viewModel"
-            type="com.appp.nira.viewDataModels.LoanCalculatorViewModel" />
+            name="userAdapter"
+            type="com.appp.nira.view.adapter.RecyclerViewAdapter" />
 
     </data>
 
@@ -61,6 +62,7 @@
             android:layout_marginTop="@dimen/dp_10"
             android:clipToPadding="false"
             android:orientation="horizontal"
+            app:adapter="@{userAdapter}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

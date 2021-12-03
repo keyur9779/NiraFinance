@@ -2,6 +2,9 @@ package com.appp.nira.view.uiActivity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.transition.Explode
+import android.transition.Slide
+import android.view.Window
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.appp.nira.R
@@ -25,6 +28,12 @@ class OtpActivity :
 
     @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
+        with(window) {
+            requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+
+            // set an exit transition
+            exitTransition = Slide()
+        }
         super.onCreate(savedInstanceState)
     }
 

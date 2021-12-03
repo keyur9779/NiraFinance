@@ -1,15 +1,16 @@
 package com.appp.nira.utils.binding
 
-import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
 import com.appp.nira.models.LoanPlannerModel
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
 import com.bumptech.glide.request.RequestOptions
 import com.github.florent37.glidepalette.BitmapPalette
 import com.github.florent37.glidepalette.GlidePalette
+import com.google.android.material.slider.Slider
 import com.skydoves.whatif.whatIfNotNullOrEmpty
 
 object ViewBinding {
@@ -19,14 +20,50 @@ object ViewBinding {
     @BindingAdapter("formatString")
     fun bindAmount(view: AppCompatTextView, amount: Int) {
 
-        Log.d("keyur", "formatString $amount")
         view.text = String.format("%,d", amount)
+    }
+
+    @JvmStatic
+    @BindingAdapter("sliderValue")
+    fun bindSlider(view: Slider, loanPlannerModel: LoanPlannerModel) {
+
+        view.apply {
+            stepSize = loanPlannerModel.loanMover.toFloat()
+            value = loanPlannerModel.defaultLoanAmount.toFloat()
+            valueFrom = loanPlannerModel.loanLowerLimit.toFloat()
+            valueTo = loanPlannerModel.loanUpperLimit.toFloat()
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("sliderIValue")
+    fun bindISlider(view: Slider, loanPlannerModel: LoanPlannerModel) {
+
+
+        view.apply {
+            stepSize = loanPlannerModel.tenurMover.toFloat()
+            value = loanPlannerModel.tenurDefault.toFloat()
+            valueFrom = loanPlannerModel.tenureMin.toFloat()
+            valueTo = loanPlannerModel.tenureMax.toFloat()
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("formatAmountString")
+    fun bindForamteAmount(view: AppCompatTextView, amount: Int) {
+        view.text = " Loan Amount ${String.format("%,d", amount)}"
+    }
+
+    @JvmStatic
+    @BindingAdapter("formatTenureString")
+    fun bindForamteTenure(view: AppCompatTextView, amount: Int) {
+
+        view.text = " Tenure $amount months"
     }
 
     @JvmStatic
     @BindingAdapter("intValue")
     fun bindIntView(view: AppCompatTextView, amount: Int) {
-        Log.d("keyur", "intValue $amount")
 
         view.text = amount.toString()
 
@@ -36,20 +73,16 @@ object ViewBinding {
     @BindingAdapter("interestValue")
     fun bindInterest(view: AppCompatTextView, amount: Int) {
 
-        Log.d("keyur", "interestValue $amount")
 
-        view.setText("Interest @ $amount% per month")
+        view.text = "Interest @ $amount% per month"
     }
 
     @JvmStatic
     @BindingAdapter("bindTotalAmount")
     fun bindLoanAmount(view: AppCompatTextView, model: LoanPlannerModel) {
 
-        Log.d("keyur", "bindTotalAmount")
 
-        val amount = model.amount + model.interest
-
-        Log.d("keyur", "bindTotalAmount $amount")
+        val amount = (model.amount + model.interest) / model.tenurDefault
 
         view.text = String.format("%,d", amount);
 
@@ -66,10 +99,13 @@ object ViewBinding {
 
     @JvmStatic
     @BindingAdapter("loadImage")
-    fun bindLoadImage(view: AppCompatImageView, url: String) {
-        Glide.with(view)
+    fun bindLoadImage(imageView: AppCompatImageView, url: String) {
+
+
+        Glide.with(imageView.context)
             .load(url)
-            .into(view)
+            .apply(RequestOptions.circleCropTransform().priority(Priority.HIGH))
+            .into(imageView)
     }
 
     @JvmStatic

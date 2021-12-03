@@ -3,6 +3,8 @@ package com.appp.nira.view.uiActivity
 
 import android.content.Intent
 import android.os.Bundle
+import android.transition.Explode
+import android.view.Window
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -17,6 +19,12 @@ class SplashScreen : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        with(window) {
+            requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+
+            // set an exit transition
+            exitTransition = Explode()
+        }
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.splash_layout)

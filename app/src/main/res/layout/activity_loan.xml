@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="loanPlannerModel"
+            type="com.appp.nira.models.LoanPlannerModel" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -52,8 +60,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="loan amoutn"
-                    android:textColor="@color/HintText">
+                    android:textColor="@color/HintText"
+                    app:formatAmountString="@{loanPlannerModel.defaultLoanAmount}">
 
                 </androidx.appcompat.widget.AppCompatTextView>
 
@@ -62,13 +70,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/loanAmount"
-                    app:labelBehavior="floating" />
-                <!--
-                                android:stepSize="@{viewModel.getLoanData.loanMover}"
-                                android:value="@{viewModel.getLoanData.defaultLoanAmount}"
-                                android:valueFrom="@{viewModel.getLoanData.loanLowerLimit}"
-                                android:valueTo="@{viewModel.getLoanData.loanUpperLimit}"
-                -->
+                    app:labelBehavior="floating"
+                    app:sliderValue="@{loanPlannerModel}" />
+
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/loanLowerLimit"
@@ -76,7 +80,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/amountSlider"
                     android:textColor="@color/HintText"
-                    android:textSize="@dimen/sp_10"></androidx.appcompat.widget.AppCompatTextView>
+                    android:textSize="@dimen/sp_10"
+                    app:intValue="@{loanPlannerModel.loanLowerLimit}"></androidx.appcompat.widget.AppCompatTextView>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/loanUpperLimit"
@@ -85,7 +90,8 @@
                     android:layout_below="@+id/amountSlider"
                     android:layout_alignParentRight="true"
                     android:textColor="@color/HintText"
-                    android:textSize="@dimen/sp_10"></androidx.appcompat.widget.AppCompatTextView>
+                    android:textSize="@dimen/sp_10"
+                    app:intValue="@{loanPlannerModel.loanUpperLimit}"></androidx.appcompat.widget.AppCompatTextView>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/loanTenure"
@@ -93,8 +99,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/loanLowerLimit"
                     android:gravity="center"
-                    android:text="Tenure 3 months"
-                    android:textColor="@color/HintText">
+                    android:textColor="@color/HintText"
+                    app:formatTenureString="@{loanPlannerModel.tenurDefault}">
 
                 </androidx.appcompat.widget.AppCompatTextView>
 
@@ -104,7 +110,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/loanTenure"
-                    app:labelBehavior="floating" />
+                    app:labelBehavior="floating"
+                    app:sliderIValue="@{loanPlannerModel}" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tenureLowerLimit"
@@ -113,7 +120,7 @@
                     android:layout_below="@+id/tenureSlider"
                     android:textColor="@color/HintText"
                     android:textSize="@dimen/sp_10"
-                    ></androidx.appcompat.widget.AppCompatTextView>
+                    app:intValue="@{loanPlannerModel.tenureMin}"></androidx.appcompat.widget.AppCompatTextView>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tenureUpperLimit"
@@ -123,7 +130,7 @@
                     android:layout_alignParentRight="true"
                     android:textColor="@color/HintText"
                     android:textSize="@dimen/sp_10"
-                    ></androidx.appcompat.widget.AppCompatTextView>
+                    app:intValue="@{loanPlannerModel.tenureMax}"></androidx.appcompat.widget.AppCompatTextView>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/emi"
@@ -141,7 +148,7 @@
                     android:layout_below="@+id/emi"
                     android:textColor="@color/HintText"
                     android:textSize="@dimen/sp_10"
-                    ></androidx.appcompat.widget.AppCompatTextView>
+                    app:interestValue="@{loanPlannerModel.interest}"></androidx.appcompat.widget.AppCompatTextView>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/totalLoan"
@@ -151,7 +158,7 @@
                     android:layout_alignParentRight="true"
                     android:textColor="@color/HintText"
                     android:textSize="@dimen/sp_18"
-                    ></androidx.appcompat.widget.AppCompatTextView>
+                    app:bindTotalAmount="@{loanPlannerModel}"></androidx.appcompat.widget.AppCompatTextView>
 
 
             </RelativeLayout>
